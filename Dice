@@ -1,0 +1,61 @@
+package kk;
+
+import java.util.Random;
+import java.util.Scanner;
+import java.util.TimerTask;
+
+public class Dice {
+    String name;
+    Random r =  new Random();
+    Scanner scan = new Scanner(System.in);
+    int roll;
+    boolean isPlayingAgain=true;
+
+    public void begin () throws InterruptedException {
+        while(isPlayingAgain){
+            playGame();
+            playAgain();
+        }
+
+    }
+
+
+    public void diceRoll (){
+       roll = r.nextInt(12);
+
+
+    }
+
+    public void playGame() throws InterruptedException {
+        System.out.println("Lets play a dice game! \n enter your name: \n");
+        name = scan.nextLine();
+        System.out.println("Press x to roll the dice");
+        String input = scan.nextLine();
+        if (input.toUpperCase().equals("X")){
+            diceRoll();
+        }
+        else {
+            System.out.println("invalid entry !");
+        }
+        Thread.sleep(2000);
+        System.out.println("Shake shake * ");
+        Thread.sleep(2000);
+        System.out.println(" Dice rolled by " + name + "!");
+        Thread.sleep(3000);
+        System.out.println("");
+        System.out.println("");
+        System.out.println(name + " rolled a " + roll + "!");
+
+
+}
+public void playAgain(){
+    System.out.println("\nWould you like to play again?\n");
+        System.out.println("\npress x to play again or y to quit ");
+        String input = scan.nextLine();
+        if(input.toUpperCase().equals("X")){
+        isPlayingAgain = true;
+}
+        else{
+            isPlayingAgain = false;
+        }
+}}
